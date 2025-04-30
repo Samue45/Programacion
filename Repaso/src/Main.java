@@ -4,12 +4,13 @@ import Week2.Day2.CentroAdopcion;
 import Week2.Day2.Gato;
 import Week2.Day2.Loro;
 import Week2.Day2.Perro;
+import Week2.Day3.PruebaEasy3;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-       day2();
+       day3();
     }
 
     public static void day1(){
@@ -36,6 +37,11 @@ public class Main {
 
         System.out.println(centro.searchAnimal("Rex").toString());
         centro.contarTipoAnimal();
+
+    }
+    public static void day3(){
+        PruebaEasy3 pruebaEasy3 = new PruebaEasy3();
+        pruebaEasy3.prueba();
 
     }
 }
