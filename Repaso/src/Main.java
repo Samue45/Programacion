@@ -5,12 +5,17 @@ import Week2.Day2.Gato;
 import Week2.Day2.Loro;
 import Week2.Day2.Perro;
 import Week2.Day3.PruebaEasy3;
+import Week2.Day4.Pajaro;
+import Week2.Day4.Persona;
+import Week2.Day4.SerVivo;
+
+import java.util.ArrayList;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-       day3();
+       day4();
     }
 
     public static void day1(){
@@ -43,5 +48,27 @@ public class Main {
         PruebaEasy3 pruebaEasy3 = new PruebaEasy3();
         pruebaEasy3.prueba();
 
+    }
+    public static void day4(){
+        ArrayList<SerVivo> serVivoArrayList = new ArrayList<>();
+
+        serVivoArrayList.add(new Pajaro("Pájaro 1"));
+        serVivoArrayList.add(new Pajaro("Pájaro 2"));
+        serVivoArrayList.add(new Pajaro("Pájaro 3"));
+        serVivoArrayList.add(new Pajaro("Pájaro 4"));
+        serVivoArrayList.add(new Persona("Juan"));
+        serVivoArrayList.add(new Persona("Paco"));
+        serVivoArrayList.add(new Persona("Manuel"));
+
+        for (SerVivo serVivo: serVivoArrayList){
+            if (serVivo instanceof Pajaro){
+
+                System.out.println( ((Pajaro) serVivo).volar());
+            }
+            if (serVivo instanceof  Persona){
+
+                System.out.println( serVivo.respirar());
+            }
+        }
     }
 }
