@@ -10,6 +10,7 @@ import Week2.Day4.Persona;
 import Week2.Day4.SerVivo;
 import Week3.Day1.Easy1;
 import Week3.Day2.Pruebas2;
+import Week4.Day1.Prueba;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,8 @@ import java.util.ArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-       day6();
+       Prueba prueba = new Prueba();
+       prueba.prueba();
     }
 
     public static void day1(){
