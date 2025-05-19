@@ -1,90 +1,86 @@
-import Week2.Day1.Carrito;
-import Week2.Day1.Medium1;
-import Week2.Day2.CentroAdopcion;
-import Week2.Day2.Gato;
-import Week2.Day2.Loro;
-import Week2.Day2.Perro;
-import Week2.Day3.PruebaEasy3;
-import Week2.Day4.Pajaro;
-import Week2.Day4.Persona;
-import Week2.Day4.SerVivo;
-import Week3.Day1.Easy1;
-import Week3.Day2.Pruebas2;
-import Week4.Day2.Prueba;
+import Week1.Day1.Bloque1.Empleado;
+import Week1.Day1.Bloque1.EmpleadoPorHoras;
+import Week1.Day1.Bloque1.EmpleadoTiempoCompleto;
+import Week1.Day1.Bloque2.Operacion;
+import Week1.Day1.Bloque3.Notificador;
+import Week1.Day1.Bloque3.Usuario;
+import Week1.Day1.Bloque3.UsuarioEmail;
+import Week1.Day1.Bloque3.UsuarioSMS;
 
-import java.util.ArrayList;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Prueba prueba = new Prueba();
-        prueba.prueba();
+        day1();
     }
 
     public static void day1(){
-        Medium1 medium1 = new Medium1();
-        medium1.mediumLevel();
-
-        Carrito carrito = new Carrito();
-        carrito.addProducto("Peras", 30,2.90);
-        carrito.addProducto("Avena", 90,1.90);
-        carrito.addProducto("Yogur", 120,0.90);
-
-        System.out.println("Total coste del carrito " + carrito.calculateTotalPriceCarrito());
-    }
-    public static void day2(){
-        CentroAdopcion centro = new CentroAdopcion();
-        centro.admitirAnimal(new Perro("Rex", 3, "Verde"));
-        centro.admitirAnimal(new Gato("Misu", 2, "Salmón"));
-        centro.admitirAnimal(new Loro("Piolín", 1, "Piano"));
-        centro.admitirAnimal(new Perro("Leo", 3, "Negro"));
-        centro.admitirAnimal(new Perro("Robin", 1, "Azul"));
-        centro.admitirAnimal(new Perro("Lucas", 2, "Blanco"));
-
-        centro.mostrarTodos();
-
-        System.out.println(centro.searchAnimal("Rex").toString());
-        centro.contarTipoAnimal();
+        block1();
+        block2();
+        block3();
 
     }
-    public static void day3(){
-        PruebaEasy3 pruebaEasy3 = new PruebaEasy3();
-        pruebaEasy3.prueba();
 
-    }
-    public static void day4(){
-        ArrayList<SerVivo> serVivoArrayList = new ArrayList<>();
+    public static void block1(){
+        Empleado empleado1 = new EmpleadoPorHoras("Paco", 300);
+        Empleado empleado2 = new EmpleadoTiempoCompleto("Juan");
+        Empleado empleado3 = new EmpleadoPorHoras("Antonio", 500);
+        Empleado empleado4 = new EmpleadoTiempoCompleto("María");
 
-        serVivoArrayList.add(new Pajaro("Pájaro 1"));
-        serVivoArrayList.add(new Pajaro("Pájaro 2"));
-        serVivoArrayList.add(new Pajaro("Pájaro 3"));
-        serVivoArrayList.add(new Pajaro("Pájaro 4"));
-        serVivoArrayList.add(new Persona("Juan"));
-        serVivoArrayList.add(new Persona("Paco"));
-        serVivoArrayList.add(new Persona("Manuel"));
+        Empleado[] empleados = {empleado1,empleado2,empleado3,empleado4};
 
-        for (SerVivo serVivo: serVivoArrayList){
-            if (serVivo instanceof Pajaro){
-
-                System.out.println( ((Pajaro) serVivo).volar());
-            }
-            if (serVivo instanceof  Persona){
-
-                System.out.println( serVivo.respirar());
-            }
+        for(Empleado empleado: empleados){
+            System.out.println(empleado.imprimirDatos());
         }
     }
-    public static void day5(){
-        Easy1 easy1 = new Easy1();
-        easy1.prueba1();
-        easy1.prueba2();
-        easy1.prueba3();
+
+    public static void block2() {
+        Operacion suma = (a, b) -> { return a + b;};
+        Operacion resta = (a, b) -> {return  a - b;};
+        Operacion multiplicacion = (a, b) -> {return  a * b;};
+        Operacion personal = (a, b) -> {
+            if (a > b){
+                return a - b;
+            }else {
+                return a + b;
+            }
+        };
+
+        System.out.println("-------Operaciones con lambdas-------");
+        System.out.println("Suma = " + aplicarOperacion(suma,5,5));
+
+        System.out.println("Resta = " + aplicarOperacion(resta,5,5));
+
+        System.out.println("Multiplicación = " + aplicarOperacion(multiplicacion,5,5));
+
+        System.out.println("Personal = " + aplicarOperacion(personal,5,5));
+
+        Operacion operacion = new Operacion() {
+            @Override
+            public int ejecutar(int a, int b) {
+                return 0;
+            }
+        };
     }
-    public static void day6(){
-        Pruebas2 pruebas2 = new Pruebas2();
-        pruebas2.p1();
-        pruebas2.p2();
-        pruebas2.p3();
+
+    public static int aplicarOperacion(Operacion op, int a, int b){
+        return op.ejecutar(a,b);
     }
+
+    public static void block3(){
+        Notificador consola = (nombre, mensaje) -> System.out.println("Nombre = " + nombre + " Mensaje = " + mensaje);
+        Notificador mayuscula = (nombre, mensaje) -> System.out.println("Nombre = " + nombre.toUpperCase() + " Mensaje = " + mensaje.toUpperCase());
+        Notificador email = (nombre, mensaje) -> System.out.println("Autor del correo = " + nombre + " Mensaje a tratar = " + mensaje);
+
+
+        Usuario usuario1 = new UsuarioEmail("Juan", consola);
+        Usuario usuario2 = new UsuarioSMS("María", mayuscula);
+        Usuario usuario3 = new UsuarioSMS("Paco",email);
+
+        usuario1.enviarNotificacion("Cuñaaaaaaaaao");
+        usuario2.enviarNotificacion("Hola");
+        usuario3.enviarNotificacion("Mamahuevo");
+    }
+
+
+
+
 }
