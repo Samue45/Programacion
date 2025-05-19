@@ -8,6 +8,9 @@ import Week2.Day3.PruebaEasy3;
 import Week2.Day4.Pajaro;
 import Week2.Day4.Persona;
 import Week2.Day4.SerVivo;
+import Week3.Day1.Easy1;
+import Week3.Day2.Pruebas2;
+import Week4.Day2.Prueba;
 
 import java.util.ArrayList;
 
@@ -15,7 +18,8 @@ import java.util.ArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-       day4();
+        Prueba prueba = new Prueba();
+        prueba.prueba();
     }
 
     public static void day1(){
@@ -70,5 +74,17 @@ public class Main {
                 System.out.println( serVivo.respirar());
             }
         }
+    }
+    public static void day5(){
+        Easy1 easy1 = new Easy1();
+        easy1.prueba1();
+        easy1.prueba2();
+        easy1.prueba3();
+    }
+    public static void day6(){
+        Pruebas2 pruebas2 = new Pruebas2();
+        pruebas2.p1();
+        pruebas2.p2();
+        pruebas2.p3();
     }
 }
